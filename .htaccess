@@ -1,0 +1,28 @@
+RewriteEngine on
+#RewriteBase /
+
+RewriteRule ^css/(.+)\.css$ css/$1.css [L]
+RewriteRule ^.+/css/(.+)\.css$ css/$1.css [L]
+
+RewriteRule ^js/(.+)\.js$ js/$1.js [L]
+RewriteRule ^.+/js/(.+)\.js$ js/$1.js [L]
+
+RewriteRule ^font/(.+)\.(.+)$ font/$1.$2 [L]
+RewriteRule ^.+/font/(.+)\.(.+)$ font/$1.$2 [L]
+
+RewriteRule ^images/(.+)\.(.+)$ images/$1.$2 [L]
+RewriteRule ^.+/images/(.+)\.(.+)$ images/$1.$2 [L]
+
+RewriteRule ([A-Za-z-0-9]+/) ?page=$1 [L]
+
+<IfModule mod_expires.c>
+ExpiresActive on
+
+ExpiresByType text/css                  "access plus 1 year"
+ExpiresByType application/javascript    "access plus 1 year"
+ExpiresByType text/javascript           "access plus 1 year"
+ExpiresByType image/jpg "access 1 month"
+ExpiresByType image/jpeg "access 1 month"
+ExpiresByType image/gif "access 1 month"
+ExpiresByType image/png "access 1 month"
+</IfModule>
